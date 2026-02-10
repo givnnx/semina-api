@@ -1,0 +1,573 @@
+openapi: 3.0.0
+info:
+  title: Semina API
+  description: API Documentation for Semina Project
+  version: 1.0.0
+servers:
+  - url: /
+    description: Current server
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    # Auth Schemas
+    SignIn:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          format: email
+          example: admin@gmail.com
+        password:
+          type: string
+          format: password
+          example: rahasia
+    SignUp:
+      type: object
+      required:
+        - email
+        - password
+        - firstName
+        - lastName
+        - role
+      properties:
+        email:
+          type: string
+          format: email
+          example: admin@gmail.com
+        password:
+          type: string
+          format: password
+          example: rahasia
+        firstName:
+          type: string
+          example: admin
+        lastName:
+          type: string
+          example: admin
+        role:
+          type: string
+          example: admin
+
+    # CMS Schemas
+    Category:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          example: web development
+
+    Talent:
+      type: object
+      required:
+        - name
+        - role
+        - image
+      properties:
+        name:
+          type: string
+        role:
+          type: string
+        image:
+          type: string
+          description: Image ID
+
+    Event:
+      type: object
+      required:
+        - title
+        - date
+        - about
+        - tagline
+        - venueName
+        - image
+        - category
+        - talent
+      properties:
+        title:
+          type: string
+        date:
+          type: string
+          format: date-time
+        about:
+          type: string
+        tagline:
+          type: string
+        venueName:
+          type: string
+        keyPoint:
+          type: array
+          items:
+            type: string
+        statusEvent:
+          type: string
+          enum: [Draft, Published]
+        tickets:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+              price:
+                type: number
+              stock:
+                type: number
+              statusTicketCategories:
+                type: boolean
+              expired:
+                type: string
+                format: date-time
+        image:
+          type: string
+        category:
+          type: string
+        talent:
+          type: string
+
+    Payment:
+      type: object
+      required:
+        - type
+        - image
+      properties:
+        type:
+          type: string
+        image:
+          type: string
+        status:
+          type: boolean
+
+    # Public Schemas
+    ParticipantSignup:
+      type: object
+      required:
+        - firstName
+        - email
+        - password
+        - role
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        role:
+          type: string
+
+    ParticipantSignin:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+
+tags:
+  - name: Auth CMS
+  - name: Categories
+  - name: Talents
+  - name: Events
+  - name: Payments
+  - name: Orders
+  - name: Organizers
+  - name: Participants (Public)
+
+paths:
+  # CMS Auth
+  /api/v1/cms/auth/signin:
+    post:
+      tags: [Auth CMS]
+      summary: Sign in as admin/organizer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SignIn"
+      responses:
+        200:
+          description: Successful login
+        400:
+          description: Invalid credentials
+        500:
+          description: Internal server error
+
+  /api/v1/cms/auth/signup:
+    post:
+      tags: [Auth CMS]
+      summary: Sign up as admin/organizer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SignUp"
+      responses:
+        200:
+          description: Successful signup
+        400:
+          description: Invalid credentials
+        500:
+          description: Internal server error
+
+  # Categories
+  /api/v1/cms/categories:
+    get:
+      tags: [Categories]
+      security: [{ bearerAuth: [] }]
+      summary: Get all categories
+      responses:
+        200:
+          description: Success
+    post:
+      tags: [Categories]
+      security: [{ bearerAuth: [] }]
+      summary: Create category
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Category"
+      responses:
+        201:
+          description: Created
+
+  /api/v1/cms/categories/{id}:
+    get:
+      tags: [Categories]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+      responses:
+        200:
+          description: Success
+    put:
+      tags: [Categories]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Category"
+      responses:
+        200:
+          description: Updated
+    delete:
+      tags: [Categories]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+      responses:
+        200:
+          description: Deleted
+
+  # Talents
+  /api/v1/cms/talents:
+    get:
+      tags: [Talents]
+      security: [{ bearerAuth: [] }]
+      summary: Get all talents
+      responses:
+        200:
+          description: Success
+    post:
+      tags: [Talents]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Talent"
+      responses:
+        201:
+          description: Created
+
+  /api/v1/cms/talents/{id}:
+    get:
+      tags: [Talents]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      responses:
+        200:
+          description: Success
+    put:
+      tags: [Talents]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Talent"
+      responses:
+        200:
+          description: Updated
+    delete:
+      tags: [Talents]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      responses:
+        200:
+          description: Deleted
+
+  # Events
+  /api/v1/cms/events:
+    get:
+      tags: [Events]
+      security: [{ bearerAuth: [] }]
+      responses:
+        200:
+          description: Success
+    post:
+      tags: [Events]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Event"
+      responses:
+        201:
+          description: Created
+
+  /api/v1/cms/events/{id}:
+    get:
+      tags: [Events]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      responses:
+        200:
+          description: Success
+    put:
+      tags: [Events]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Event"
+      responses:
+        200:
+          description: Updated
+    delete:
+      tags: [Events]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      responses:
+        200:
+          description: Deleted
+
+  # Payments
+  /api/v1/cms/payments:
+    get:
+      tags: [Payments]
+      security: [{ bearerAuth: [] }]
+      responses:
+        200:
+          description: Success
+    post:
+      tags: [Payments]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Payment"
+      responses:
+        201:
+          description: Created
+
+  /api/v1/cms/payments/{id}:
+    get:
+      tags: [Payments]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      responses:
+        200:
+          description: Success
+    put:
+      tags: [Payments]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Payment"
+      responses:
+        200:
+          description: Updated
+    delete:
+      tags: [Payments]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      responses:
+        200:
+          description: Deleted
+
+  # Orders
+  /api/v1/cms/orders:
+    get:
+      tags: [Orders]
+      security: [{ bearerAuth: [] }]
+      summary: Get all orders
+      responses:
+        200:
+          description: Success
+
+  # Organizers
+  /api/v1/cms/organizers:
+    post:
+      tags: [Organizers]
+      summary: Create Organizer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [organizer]
+              properties:
+                organizer:
+                  type: string
+      responses:
+        201:
+          description: Created
+
+  /api/v1/cms/organizers/users:
+    get:
+      tags: [Organizers]
+      responses:
+        200:
+          description: Success
+    post:
+      tags: [Organizers]
+      security: [{ bearerAuth: [] }]
+      summary: Create User for Organizer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, name, password, role]
+              properties:
+                email: { type: string }
+                name: { type: string }
+                password: { type: string }
+                role: { type: string }
+                confirmPassword: { type: string }
+      responses:
+        201:
+          description: Created
+
+  # Participants (Public)
+  /api/v1/events:
+    get:
+      tags: [Participants (Public)]
+      summary: Get all events (landing page)
+      responses:
+        200:
+          description: Success
+
+  /api/v1/events/{id}:
+    get:
+      tags: [Participants (Public)]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      responses:
+        200:
+          description: Success
+
+  /api/v1/auth/signup:
+    post:
+      tags: [Participants (Public)]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ParticipantSignup"
+      responses:
+        201:
+          description: Registered
+
+  /api/v1/auth/signin:
+    post:
+      tags: [Participants (Public)]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ParticipantSignin"
+      responses:
+        200:
+          description: Login exact
