@@ -16,6 +16,7 @@ const connectToDb = async () => {
 
   try {
     const db = await mongoose.connect(urlDb, {
+      dbName: "db_semina",
       serverSelectionTimeoutMS: 5000,
       socketTimeoutMS: 45000,
     });
