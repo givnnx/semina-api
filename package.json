@@ -7,7 +7,9 @@
     "dev": "nodemon --exec ts-node --transpile-only src/bin/www.ts",
     "build": "tsc && node -e \"const fs=require('fs'); fs.cpSync('src/swagger.yaml', 'dist/swagger.yaml'); fs.cpSync('src/app/views', 'dist/app/views', { recursive: true });\"",
     "seed:admin": "ts-node src/seed/admin.ts",
-    "seed": "ts-node src/seed/seed.ts"
+    "scrape:seed": "ts-node src/seed/scrapeWithAgentBrowser.ts",
+    "seed": "ts-node src/seed/seed.ts",
+    "push:env": "node scripts/push-env.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

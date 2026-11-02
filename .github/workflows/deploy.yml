@@ -1,0 +1,52 @@
+name: Deploy semina-api to Vercel
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+      - name: Sync Production Environment Variables to Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          echo "${{ secrets.URL_MONGODB_DEV }}" | vercel env add URL_MONGODB_DEV production --force --token=$VERCEL_TOKEN
+          echo "${{ secrets.JWT_SECRET }}" | vercel env add JWT_SECRET production --force --token=$VERCEL_TOKEN
+          echo "${{ secrets.JWT_SECRET_REFRESH_TOKEN }}" | vercel env add JWT_SECRET_REFRESH_TOKEN production --force --token=$VERCEL_TOKEN
+          echo "${{ secrets.GMAIL }}" | vercel env add GMAIL production --force --token=$VERCEL_TOKEN
+          echo "${{ secrets.PASSWORD }}" | vercel env add PASSWORD production --force --token=$VERCEL_TOKEN
+          echo "${{ secrets.CORS_ORIGINS }}" | vercel env add CORS_ORIGINS production --force --token=$VERCEL_TOKEN
+
+      - name: Build Project Artifacts
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+      - name: Deploy Project Artifacts to Vercel
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}

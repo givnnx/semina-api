@@ -1,1 +1,1 @@
-{ "watch": ["src"], "ext": "ts,js,json", "exec": "ts-node src/bin/www", "ignore": ["src/**/*.test.ts"] }
+{ "watch": ["src"], "ext": "ts,js,json", "exec": "ts-node --transpile-only src/bin/www.ts", "ignore": ["src/**/*.test.ts", "src/seed/**"] }

@@ -1,9 +1,9 @@
 node_modules
 .vercel
-scripts
 dist
 .env
 .env.*
 !.env.example
 /plan/
 plan/
+.env*

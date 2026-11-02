@@ -1,0 +1,560 @@
+{
+  "scrapedAt": "2026-11-02T05:24:01.693Z",
+  "session": "semina_seed_scraper",
+  "sources": [
+    "https://events.linuxfoundation.org/about/calendar/",
+    "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/keynote-speakers/"
+  ],
+  "calendarEvents": [
+    {
+      "title": "Open Source in Finance Forum New York",
+      "url": "https://events.linuxfoundation.org/open-source-finance-forum-new-york/"
+    },
+    {
+      "title": "Maintainer Summit",
+      "url": "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/features-add-ons/maintainer-summit/"
+    },
+    {
+      "title": "Agentics Day: MCP + Agents North America",
+      "url": "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/co-located-events/agentics-day-mcp-agents/"
+    },
+    {
+      "title": "ArgoCon North America",
+      "url": "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/co-located-events/argocon/"
+    },
+    {
+      "title": "BackstageCon North America",
+      "url": "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/co-located-events/backstagecon/"
+    },
+    {
+      "title": "CiliumCon North America",
+      "url": "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/co-located-events/ciliumcon/"
+    },
+    {
+      "title": "Cloud Native AI & Inference Day North America",
+      "url": "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/co-located-events/cloud-native-ai-inference-day/"
+    },
+    {
+      "title": "FluxCon North America",
+      "url": "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/co-located-events/fluxcon/"
+    },
+    {
+      "title": "KubeCon + CloudNativeCon North America",
+      "url": "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/"
+    },
+    {
+      "title": "Kubernetes on Edge Day North America",
+      "url": "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/co-located-events/kubernetes-on-edge-day/"
+    },
+    {
+      "title": "Observability Day North America",
+      "url": "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/co-located-events/observability-day/"
+    },
+    {
+      "title": "Open Source SecurityCon North America",
+      "url": "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/co-located-events/open-source-securitycon/"
+    },
+    {
+      "title": "OpenTofu Day North America",
+      "url": "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/co-located-events/opentofu-day/"
+    },
+    {
+      "title": "Platform Engineering Day North America",
+      "url": "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/co-located-events/platform-engineering-day/"
+    },
+    {
+      "title": "gRPConf India",
+      "url": "https://events.linuxfoundation.org/grpconf-india/"
+    },
+    {
+      "title": "MCP Dev Summit Nairobi",
+      "url": "https://events.linuxfoundation.org/mcp-dev-summit-nairobi/"
+    },
+    {
+      "title": "Automotive Linux Summit",
+      "url": "https://events.linuxfoundation.org/automotive-linux-summit/"
+    },
+    {
+      "title": "Embedded Linux Conference Asia",
+      "url": "https://events.linuxfoundation.org/embedded-linux-conference-asia/"
+    },
+    {
+      "title": "Open Source Summit Japan",
+      "url": "https://events.linuxfoundation.org/open-source-summit-japan/"
+    },
+    {
+      "title": "ONE Summit Japan",
+      "url": "https://events.linuxfoundation.org/open-networking-edge-summit-japan/"
+    },
+    {
+      "title": "Open Compliance Summit",
+      "url": "https://events.linuxfoundation.org/open-compliance-summit/"
+    },
+    {
+      "title": "PyTorch Day Japan",
+      "url": "https://events.linuxfoundation.org/pytorch-day-japan/"
+    },
+    {
+      "title": "Open Source Forum",
+      "url": "https://events.linuxfoundation.org/aswf-open-source-forum/"
+    },
+    {
+      "title": "The Linux Foundation Member Summit",
+      "url": "https://events.linuxfoundation.org/lf-member-summit/"
+    },
+    {
+      "title": "Agentics Day: MCP + Agents Europe",
+      "url": "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/agentics-day-mcp-agents/"
+    },
+    {
+      "title": "ArgoCon Europe",
+      "url": "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/argocon/"
+    },
+    {
+      "title": "BackstageCon Europe",
+      "url": "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/backstagecon/"
+    },
+    {
+      "title": "Buildpacks Summit Europe",
+      "url": "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/buildpacks-summit/"
+    },
+    {
+      "title": "CiliumCon Europe",
+      "url": "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/ciliumcon/"
+    },
+    {
+      "title": "Cloud Native AI + Inference Day Europe",
+      "url": "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/cloud-native-ai-inference-day-europe/"
+    },
+    {
+      "title": "FluxCon Europe",
+      "url": "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/fluxcon/"
+    },
+    {
+      "title": "KeyCloakCon Europe",
+      "url": "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/keycloakcon/"
+    },
+    {
+      "title": "KubeCon + CloudNativeCon Europe",
+      "url": "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/"
+    },
+    {
+      "title": "Kubernetes on Edge Day Europe",
+      "url": "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/kubernetes-on-edge-day/"
+    },
+    {
+      "title": "NeoCloudCon Europe",
+      "url": "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/neocloudcon/"
+    },
+    {
+      "title": "Observability Day Europe",
+      "url": "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/observability-day/"
+    },
+    {
+      "title": "Open Source SecurityCon Europe",
+      "url": "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/open-source-securitycon/"
+    },
+    {
+      "title": "Open Sovereign AI + Cloud Day Europe",
+      "url": "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/open-sovereign-ai-cloud-day/"
+    },
+    {
+      "title": "OpenTofu Day Europe",
+      "url": "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/opentofu-day/"
+    },
+    {
+      "title": "Platform Engineering Day Europe",
+      "url": "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/platform-engineering-day/"
+    },
+    {
+      "title": "RISC-V at embedded world",
+      "url": "https://events.linuxfoundation.org/riscv-at-embedded-world/"
+    },
+    {
+      "title": "HPSF Conference",
+      "url": "https://events.linuxfoundation.org/hpsf-conference/"
+    },
+    {
+      "title": "Confidential Computing Summit",
+      "url": "https://events.linuxfoundation.org/confidential-computing-summit/"
+    },
+    {
+      "title": "Linux Storage, Filesystem, MM & BPF Summit",
+      "url": "https://events.linuxfoundation.org/lsfmmbpf/"
+    },
+    {
+      "title": "AGNTCon + MCPCon North America 2027",
+      "url": "https://events.linuxfoundation.org/agntcon-mcpcon-north-america-2027/"
+    },
+    {
+      "title": "AGL All Member Meeting Japan",
+      "url": "https://events.linuxfoundation.org/agl-amm/"
+    },
+    {
+      "title": "Open Source Summit North America",
+      "url": "https://events.linuxfoundation.org/open-source-summit-north-america/"
+    },
+    {
+      "title": "Overture Member Summit",
+      "url": "https://events.linuxfoundation.org/overture-member-summit/"
+    },
+    {
+      "title": "KubeCon + CloudNativeCon Japan",
+      "url": "https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/"
+    },
+    {
+      "title": "AGNTCon + MCPCon Europe 2027",
+      "url": "https://events.linuxfoundation.org/agntcon-mcpcon-europe-2027/"
+    },
+    {
+      "title": "Open Source Summit Europe 2027",
+      "url": "https://events.linuxfoundation.org/open-source-summit-europe-2027/"
+    },
+    {
+      "title": "LF Energy Summit Europe 2027",
+      "url": "https://events.linuxfoundation.org/lfenergysummit-europe-2027/"
+    },
+    {
+      "title": "PyTorch Conference 2027",
+      "url": "https://events.linuxfoundation.org/pytorch-conference-2027/"
+    },
+    {
+      "title": "Open Source Summit Korea",
+      "url": "https://events.linuxfoundation.org/open-source-summit-korea/"
+    },
+    {
+      "title": "KubeCon + CloudNativeCon North America 2027",
+      "url": "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america-2027/"
+    },
+    {
+      "title": "KubeCon + CloudNativeCon Europe 2028",
+      "url": "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe-2028/"
+    }
+  ],
+  "speakers": [
+    {
+      "img": "https://cdn.sessionize.com/image/e35b-400o400o1-WMpLZecb2yUW4dCSiAV1zC.jpeg",
+      "name": "Jaana Dogan",
+      "role": "Software Engineer",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/559e-400o400o1-D91ADUS78RjaHNmryzxxwF.png",
+      "name": "Viv Keswani",
+      "role": "Senior Director, Engineering",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/1ed3-400o400o1-sa5rk3TE889rKHLBWYWBoa.jpg",
+      "name": "Lucy Sweet",
+      "role": "Member of Technical Staff",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/7a2a-400o400o1-wmqaqLAeXa6tJzviVU8ZiY.jpg",
+      "name": "Jim Beyers",
+      "role": "Vice President",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/8830-400o400o1-5dzeF5xKDG4w9myZe7fgH.png",
+      "name": "Warren Barkley",
+      "role": "Vice President of Product Management",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/f0af-400o400o1-N7pZDMKGtWFrBLBuw7FkLs.jpg",
+      "name": "Jonathan Bryce",
+      "role": "Executive Director, Cloud and Infrastructure",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/826a-400o400o1-rn4PJdPpVDYgrtPoUh8hBu.jpg",
+      "name": "Shaun Hopper",
+      "role": "Production Engineer",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/b3ef-400o400o1-nwXJhysu3oJncCZ38fkQBL.jpg",
+      "name": "Tim Hockin",
+      "role": "Distinguished Engineer",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/e607-400o400o1-46gETgg2LpFuBJEgLTTjxc.jpg",
+      "name": "Chris Aniszczyk",
+      "role": "CTO, Cloud and Infrastructure",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/5d39-400o400o1-KLA33jLCwutUfJQs8L9Yem.png",
+      "name": "Idit Levine",
+      "role": "CEO",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/b7ba-400o400o1-DRs5J4QQDW9wcSCUHwLWfo.jpg",
+      "name": "Jeff Hoffman",
+      "role": "OCI VP of Container Services",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/115f-400o400o1-p7bZNNoGH3msAKsgpxKWSg.jpg",
+      "name": "Robert Nishihara",
+      "role": "Co-founder",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/250d-400o400o1-PqddsXBsH6yHdaavMJzi4R.jpg",
+      "name": "Jorge Palma",
+      "role": "Principal PM Lead, Azure Kubernetes Service",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/929e-400o400o1-WMHHWy7SzES5fNcBcBea2V.jpg",
+      "name": "Jessica Forrester",
+      "role": "Senior Distinguished Engineer",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/5d37-400o400o1-Sbx8GTRa9R4AvYEgZhwu5S.png",
+      "name": "Kevin Cochrane",
+      "role": "CMO",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/4b91-400o400o1-PigGGqNbMpS98oJFhL1N3H.png",
+      "name": "Ron Kahn",
+      "role": "Senior Software Engineer",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/6b85-400o400o1-WLFHhutS5iPpTnQgSXXDug.jpg",
+      "name": "Dilpreet Bindra",
+      "role": "Sr. Director Engineering, VCF Division",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/8b2c-400o400o1-VWBGuPC7YVBGvuQVLhuRdU.jpg",
+      "name": "Jago Macleod",
+      "role": "Engineering Director, Kubernetes & GKE",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/1aaf-400o400o1-MhJizh7jPbLJgiSPpYsHgb.jpg",
+      "name": "Marlow Warnicke",
+      "role": "Senior Software Engineer",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/3840-400o400o1-avNrMDLGBq5nJgXYND2cWf.jpg",
+      "name": "Andjelko Iharos",
+      "role": "VP of Architecture",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/91b0-400o400o1-pR9dNtEDJEGDAMaUZVf8Sh.jpg",
+      "name": "Michael Amundson",
+      "role": "Distinguished Engineer",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/f630-400o400o1-PPeeByUfNR7vbBwJ6PpBa8.png",
+      "name": "Yodar Shafrir",
+      "role": "CEO",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/db40-400o400o1-HDekH96jWDg5HvFQuueUpg.png",
+      "name": "Brandon Schoen",
+      "role": "Senior Director, Professional Services",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/a40e-400o400o1-DpUmyvWXM79JS4bdPbekQm.jpg",
+      "name": "Vara Bonthu",
+      "role": "Principal Open Source Specialist SA",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/65f8-400o400o1-GVD5YKaw1p3na1geFnbD7.jpg",
+      "name": "Kathryn Baldauf",
+      "role": "Software Engineer",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/3d93-400o400o1-M4CFFua3KsnFPL4kuHqxB4.jpg",
+      "name": "Bassam Tabbara",
+      "role": "Crossplane Steering Committee, Founder & CEO Upbound",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/71bf-400o400o1-WKCNNmp7C8cTAqaPXcEVra.jpg",
+      "name": "Phong Nguyen",
+      "role": "Production Engineer",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/aae5-400o400o1-UazndFYakAk5fc6gyiQz4d.png",
+      "name": "Sunil Arora",
+      "role": "Software Engineer",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/ed48-400o400o1-aS6phS7puNKkUATunmTjKq.jpg",
+      "name": "Keith Babo",
+      "role": "Chief Product Officer",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/f38d-400o400o1-pCQUdmga1rfCzKPRPvvsxV.jpg",
+      "name": "Deepak Goel",
+      "role": "CTO Cloud Native",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/eecf-400o400o1-pZJa7toVkK4Y3yXanEAECR.jpg",
+      "name": "Ekin Karabulut",
+      "role": "Developer Advocate",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/7cc8-400o400o1-VEPYr3aDhHntKAbEY5bWgy.jpg",
+      "name": "Daniel Moch",
+      "role": "Senior Staff DevSecOps Engineer",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/ce11-400o400o1-MFCS6Re7w5KqTkKZqDvhxD.jpg",
+      "name": "Frank Li",
+      "role": "Head of Developer Relations",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/c7de-400o400o1-UoWQmdiG1APkjtMBrXBUEq.png",
+      "name": "Shiva Nimmagadda",
+      "role": "Vice President, Software Engineering",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/ac78-400o400o1-Sz2a8BSWqio3EBWVg27mkk.jpg",
+      "name": "Kai-Hsun Chen",
+      "role": "Infrastructure Lead",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/97e9-400o400o1-siwofXTxq7x4QnwNkWm9Eu.png",
+      "name": "Vince Prignano",
+      "role": "Staff Engineer",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/5cdb-400o400o1-wLgqV8Hs1HJcPpqgB9wqGq.jpg",
+      "name": "Phill Morton",
+      "role": "Platform Architect",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/a7e6-400o400o1-f7hy3gkekeedz6H3jKXEe3.jpg",
+      "name": "Eitan Yarmush",
+      "role": "Software Architect",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/bb37-400o400o1-pdYHsskxEZdnf9Dv4xWjfm.jpg",
+      "name": "Luiz Scheidegger",
+      "role": "Member of Technical Staff",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/d7f1-400o400o1-GXuAfdajiE1xZSHEn933fx.jpg",
+      "name": "Mike Stefaniak",
+      "role": "Senior Manager of Product",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/cf53-400o400o1-HNeE59sqGRxESniqMrWNPs.jpg",
+      "name": "Jeffrey Sica",
+      "role": "Head of Projects",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/a1ec-400o400o1-wXfSbgV8TBR1RdcYS5ott1.jpg",
+      "name": "Hao Jiang",
+      "role": "Software Engineer",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/774d-400o400o1-MLtdPzzGEPytVJbfoZAfix.jpg",
+      "name": "Ravin Kumar",
+      "role": "Staff Research Engineer",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/cf13-400o400o1-MZuaatpi96z3HoYVaJcosd.png",
+      "name": "Lorenzo Biava",
+      "role": "Staff Infrastructure Engineer",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/0431-400o400o1-Jb4AxpUoFWKSSzmvooqhmk.jpg",
+      "name": "Joe Zhou",
+      "role": "Lead Developer Advocate",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/da21-400o400o1-y3vxUoQdXuzH5sfmXcZGG.png",
+      "name": "Alolita Sharma",
+      "role": "Observability Engineering Leader at Apple, OpenTelemetry Governance Committee Member",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/5b9e-400o400o1-UCbAdJgpvmydi2DkijCqtm.jpg",
+      "name": "Dmitry Berkovich",
+      "role": "Software Engineer",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/8c78-400o400o1-R1bUnS2R1cWTuARaMT81Nt.jpg",
+      "name": "Brandt Keller",
+      "role": "Staff Software Engineer",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/6665-400o400o1-Basp79n5MRMRPSRAqbHbe6.jpg",
+      "name": "Andrey Velichkevich",
+      "role": "AI Engineer",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/23ac-400o400o1-hryVbTdLS1rbKtMmk8Nr8P.png",
+      "name": "Manabu McCloskey",
+      "role": "Sr. Open Source Engineer",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/b154-400o400o1-UnrH8vnN8XbaR16rnvDHp6.jpg",
+      "name": "Lin Sun",
+      "role": "Head of Open Source",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/bb77-400o400o1-RHWe7L8jdTrBS2o2ch6bQe.png",
+      "name": "Abdel Sghiouar",
+      "role": "Senior Cloud Developer Advocate",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/e452-400o400o1-QS5QAAEJmpkAVzHSKNDube.jpg",
+      "name": "Abby Bangser",
+      "role": "Principal Engineer",
+      "source": "Sessionize / KubeCon North America"
+    },
+    {
+      "img": "https://cdn.sessionize.com/image/4eb1-400o400o1-GCoDTDctMiTHc44c3L2ChA.jpg",
+      "name": "Jorge Castro",
+      "role": "",
+      "source": "Sessionize / KubeCon North America"
+    }
+  ]
+}
