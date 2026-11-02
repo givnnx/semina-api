@@ -9,3 +9,12 @@ export const jwtExpiration = "2h";
 export const jwtRefreshTokenExpiration = "24h";
 export const gmail = process.env.GMAIL;
 export const password = process.env.PASSWORD;
+
+if (
+  process.env.NODE_ENV !== "test" &&
+  (!urlDb || !jwtSecret || !jwtRefreshTokenSecret)
+) {
+  throw new Error(
+    "Missing required environment variables: URL_MONGODB_DEV, JWT_SECRET, JWT_SECRET_REFRESH_TOKEN",
+  );
+}

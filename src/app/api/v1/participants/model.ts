@@ -8,7 +8,8 @@ export interface IParticipant extends mongoose.Document {
   password: string;
   role: string;
   status: 'aktif' | 'tidak aktif';
-  otp: string;
+  otp?: string;
+  otpExpiresAt?: Date;
   comparePassword(candidatePassword: string): Promise<boolean>;
 }
 
@@ -44,14 +45,16 @@ const participantSchema = new mongoose.Schema(
     },
     otp: {
       type: String,
-      required: true,
+    },
+    otpExpiresAt: {
+      type: Date,
     },
   },
   { timestamps: true }
 );
 
 participantSchema.pre<IParticipant>('save', async function (next) {
-  const User = this;
+  const User = this as unknown as IParticipant;
   if (User.isModified('password')) {
     User.password = await bcrypt.hash(User.password, 12);
   }

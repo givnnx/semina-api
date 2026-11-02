@@ -1,16 +1,22 @@
 import Talents from "../../api/v1/talents/model";
 import { checkingImage } from "./images";
 import { Request } from "express";
+import { CustomRequest } from "../../middlewares/auth";
+import { escapeRegex } from "../../utils/escapeRegex";
 
 import { NotFoundError, BadRequestError } from "../../errors";
 
 const getAllTalents = async (req: Request) => {
   const { keyword } = req.query;
+  const organizer = (req as CustomRequest).user?.organizer;
 
-  let condition: any = { organizer: (req as any).user.organizer };
+  let condition: Record<string, unknown> = { organizer };
 
   if (keyword) {
-    condition = { ...condition, name: { $regex: keyword, $options: "i" } };
+    condition = {
+      ...condition,
+      name: { $regex: escapeRegex(String(keyword)), $options: "i" },
+    };
   }
 
   const result = await Talents.find(condition)
@@ -28,9 +34,10 @@ const createTalents = async (req: Request) => {
 
   await checkingImage(image);
 
+  const organizer = (req as CustomRequest).user?.organizer;
   const check = await Talents.findOne({
     name,
-    organizer: (req as any).user.organizer,
+    organizer,
   });
 
   if (check) throw new BadRequestError("pembicara nama duplikat");
@@ -39,7 +46,7 @@ const createTalents = async (req: Request) => {
     name,
     image,
     role,
-    organizer: (req as any).user.organizer,
+    organizer,
   });
 
   return result;
@@ -50,7 +57,7 @@ const getOneTalents = async (req: Request) => {
 
   const result = await Talents.findOne({
     _id: id,
-    organizer: (req as any).user.organizer,
+    organizer: (req as CustomRequest).user?.organizer,
   })
     .populate({
       path: "image",
@@ -70,17 +77,18 @@ const updateTalents = async (req: Request) => {
 
   await checkingImage(image);
 
+  const organizer = (req as CustomRequest).user?.organizer;
   const check = await Talents.findOne({
     name,
-    organizer: (req as any).user.organizer,
+    organizer,
     _id: { $ne: id },
   });
 
   if (check) throw new BadRequestError("pembicara nama duplikat");
 
   const result = await Talents.findOneAndUpdate(
-    { _id: id },
-    { name, image, role, organizer: (req as any).user.organizer },
+    { _id: id, organizer },
+    { name, image, role, organizer },
     { new: true, runValidators: true },
   );
 
@@ -95,7 +103,7 @@ const deleteTalents = async (req: Request) => {
 
   const result = await Talents.findOne({
     _id: id,
-    organizer: (req as any).user.organizer,
+    organizer: (req as CustomRequest).user?.organizer,
   });
 
   if (!result)
@@ -106,8 +114,9 @@ const deleteTalents = async (req: Request) => {
   return result;
 };
 
-const checkingTalents = async (id: string) => {
-  const result = await Talents.findOne({ _id: id });
+const checkingTalents = async (id: string, organizer?: string) => {
+  const filter = { _id: id, ...(organizer ? { organizer } : {}) };
+  const result = await Talents.findOne(filter);
 
   if (!result)
     throw new NotFoundError(`Tidak ada pembicara dengan id :  ${id}`);

@@ -1,6 +1,14 @@
+import crypto from "crypto";
 import multer from "multer";
 import { Request } from "express";
+import { BadRequestError } from "../errors";
 
+const MIME_MAP: Record<string, string> = {
+  "image/jpeg": ".jpg",
+  "image/jpg": ".jpg",
+  "image/png": ".png",
+  "image/webp": ".webp",
+};
 const storage = multer.diskStorage({
   destination: function (
     req: Request,
@@ -14,7 +22,8 @@ const storage = multer.diskStorage({
     file: Express.Multer.File,
     cb: (error: Error | null, filename: string) => void,
   ) {
-    cb(null, Math.floor(Math.random() * 99999999) + "-" + file.originalname);
+    const ext = MIME_MAP[file.mimetype] || ".jpg";
+    cb(null, `${crypto.randomUUID()}${ext}`);
   },
 });
 
@@ -23,14 +32,14 @@ const fileFilter = (
   file: Express.Multer.File,
   cb: multer.FileFilterCallback,
 ) => {
-  if (
-    file.mimetype === "image/jpeg" ||
-    file.mimetype === "image/png" ||
-    file.mimetype === "image/jpg"
-  ) {
+  if (MIME_MAP[file.mimetype]) {
     cb(null, true);
   } else {
-    cb(null, false);
+    cb(
+      new BadRequestError(
+        "Unsupported file format. Only JPEG, PNG, and WebP images are allowed.",
+      ),
+    );
   }
 };
 

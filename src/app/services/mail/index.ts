@@ -2,6 +2,7 @@ import nodemailer from "nodemailer";
 import Mustache from "mustache";
 import { gmail, password } from "../../config";
 import fs from "fs";
+import path from "path";
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
@@ -15,7 +16,8 @@ const transporter = nodemailer.createTransport({
 
 const otpMail = async (email: string, data: any) => {
   try {
-    let template = fs.readFileSync("src/app/views/email/otp.html", "utf8");
+    const templatePath = path.resolve(__dirname, "../../views/email/otp.html");
+    const template = fs.readFileSync(templatePath, "utf8");
 
     let message = {
       from: gmail,
@@ -26,7 +28,10 @@ const otpMail = async (email: string, data: any) => {
 
     return await transporter.sendMail(message);
   } catch (ex) {
-    console.log(ex);
+    console.error("Mail delivery error:", ex);
+    if (process.env.NODE_ENV === "production") {
+      throw ex;
+    }
   }
 };
 

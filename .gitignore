@@ -3,5 +3,7 @@ node_modules
 scripts
 dist
 .env
-.env.local
-.env.development
+.env.*
+!.env.example
+/plan/
+plan/

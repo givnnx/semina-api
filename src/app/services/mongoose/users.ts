@@ -2,6 +2,7 @@ import Users from '../../api/v1/users/model';
 import Organizers from '../../api/v1/organizers/model';
 import { BadRequestError } from '../../errors';
 import { Request } from 'express';
+import { CustomRequest } from '../../middlewares/auth';
 
 const createOrganizer = async (req: Request) => {
   const { organizer, role, email, password, confirmPassword, name } = req.body;
@@ -20,7 +21,7 @@ const createOrganizer = async (req: Request) => {
     role,
   });
 
-  const usersObj = users.toObject();
+  const usersObj = users.toObject() as unknown as Record<string, unknown>;
   delete usersObj.password;
 
   return usersObj;
@@ -33,19 +34,25 @@ const createUsers = async (req: Request) => {
     throw new BadRequestError('Password dan Konfirmasi password tidak cocok');
   }
 
+  const customReq = req as CustomRequest;
   const result = await Users.create({
     name,
     email,
-    organizer: (req as any).user.organizer,
+    organizer: customReq.user?.organizer,
     password,
     role,
   });
 
-  return result;
+  const resultObj = result.toObject() as unknown as Record<string, unknown>;
+  delete resultObj.password;
+
+  return resultObj;
 };
 
 const getAllUsers = async (req: Request) => {
-  const result = await Users.find();
+  const user = (req as CustomRequest).user;
+  const filter = user?.role === 'owner' ? {} : { organizer: user?.organizer };
+  const result = await Users.find(filter).select('-password');
 
   return result;
 };

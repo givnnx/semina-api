@@ -54,7 +54,9 @@ const signup = async (req: any) => {
     organizer,
   });
 
-  return user;
+  const userObj = user.toObject() as unknown as Record<string, unknown>;
+  delete userObj.password;
+  return userObj;
 };
 
 export { signin, signup };

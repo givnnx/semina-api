@@ -1,11 +1,13 @@
 // import model categories
 import Categories from "../../api/v1/categories/model";
 import { Request } from "express";
+import { CustomRequest } from "../../middlewares/auth";
 
 import { NotFoundError, BadRequestError } from "../../errors";
 
 const getAllCategories = async (req: Request) => {
-  let condition = { organizer: (req as any).user.organizer };
+  const user = (req as CustomRequest).user;
+  const condition = { organizer: user?.organizer };
 
   const result = await Categories.find(condition);
 
@@ -17,14 +19,14 @@ const createCategories = async (req: Request) => {
 
   const check = await Categories.findOne({
     name,
-    organizer: (req as any).user.organizer,
+    organizer: (req as CustomRequest).user?.organizer,
   });
 
   if (check) throw new BadRequestError("kategori nama duplikat");
 
   const result = await Categories.create({
     name,
-    organizer: (req as any).user.organizer,
+    organizer: (req as CustomRequest).user?.organizer,
   });
 
   return result;
@@ -35,7 +37,7 @@ const getOneCategories = async (req: Request) => {
 
   const result = await Categories.findOne({
     _id: id,
-    organizer: (req as any).user.organizer,
+    organizer: (req as CustomRequest).user?.organizer,
   });
 
   if (!result) throw new NotFoundError(`Tidak ada Kategori dengan id :  ${id}`);
@@ -47,17 +49,18 @@ const updateCategories = async (req: Request) => {
   const { id } = req.params;
   const { name } = req.body;
 
+  const organizer = (req as CustomRequest).user?.organizer;
   const check = await Categories.findOne({
     name,
-    organizer: (req as any).user.organizer,
+    organizer,
     _id: { $ne: id },
   });
 
   if (check) throw new BadRequestError("kategori nama duplikat");
 
   const result = await Categories.findOneAndUpdate(
-    { _id: id },
-    { name, organizer: (req as any).user.organizer },
+    { _id: id, organizer },
+    { name, organizer },
     { new: true, runValidators: true },
   );
 
@@ -71,7 +74,7 @@ const deleteCategories = async (req: Request) => {
 
   const result = await Categories.findOne({
     _id: id,
-    organizer: (req as any).user.organizer,
+    organizer: (req as CustomRequest).user?.organizer,
   });
 
   if (!result) throw new NotFoundError(`Tidak ada Kategori dengan id :  ${id}`);
@@ -81,8 +84,9 @@ const deleteCategories = async (req: Request) => {
   return result;
 };
 
-const checkingCategories = async (id: string) => {
-  const result = await Categories.findOne({ _id: id });
+const checkingCategories = async (id: string, organizer?: string) => {
+  const filter = { _id: id, ...(organizer ? { organizer } : {}) };
+  const result = await Categories.findOne(filter);
 
   if (!result) throw new NotFoundError(`Tidak ada kategori dengan id :  ${id}`);
 

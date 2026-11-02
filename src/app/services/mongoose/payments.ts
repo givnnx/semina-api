@@ -1,11 +1,13 @@
 import Payments from '../../api/v1/payments/model';
 import { checkingImage } from './images';
 import { Request } from 'express';
+import { CustomRequest } from '../../middlewares/auth';
 
 import { NotFoundError, BadRequestError } from '../../errors';
 
 const getAllPayments = async (req: Request) => {
-  let condition = { organizer: (req as any).user.organizer };
+  const organizer = (req as CustomRequest).user?.organizer;
+  const condition = { organizer };
 
   const result = await Payments.find(condition)
     .populate({
@@ -22,14 +24,15 @@ const createPayments = async (req: Request) => {
 
   await checkingImage(image);
 
-  const check = await Payments.findOne({ type, organizer: (req as any).user.organizer });
+  const organizer = (req as CustomRequest).user?.organizer;
+  const check = await Payments.findOne({ type, organizer });
 
   if (check) throw new BadRequestError('Tipe pembayaran duplikat');
 
   const result = await Payments.create({
     image,
     type,
-    organizer: (req as any).user.organizer,
+    organizer,
   });
 
   return result;
@@ -40,7 +43,7 @@ const getOnePayments = async (req: Request) => {
 
   const result = await Payments.findOne({
     _id: id,
-    organizer: (req as any).user.organizer,
+    organizer: (req as CustomRequest).user?.organizer,
   })
     .populate({
       path: 'image',
@@ -60,17 +63,18 @@ const updatePayments = async (req: Request) => {
 
   await checkingImage(image);
 
+  const organizer = (req as CustomRequest).user?.organizer;
   const check = await Payments.findOne({
     type,
-    organizer: (req as any).user.organizer,
+    organizer,
     _id: { $ne: id },
   });
 
   if (check) throw new BadRequestError('Tipe pembayaran duplikat');
 
   const result = await Payments.findOneAndUpdate(
-    { _id: id },
-    { type, image, organizer: (req as any).user.organizer },
+    { _id: id, organizer },
+    { type, image, organizer },
     { new: true, runValidators: true }
   );
 
@@ -85,7 +89,7 @@ const deletePayments = async (req: Request) => {
 
   const result = await Payments.findOne({
     _id: id,
-    organizer: (req as any).user.organizer,
+    organizer: (req as CustomRequest).user?.organizer,
   });
 
   if (!result)

@@ -4,10 +4,14 @@ import {
   signinParticipant,
   signupParticipant,
   activateParticipant,
+  getAllPaymentByOrganizer,
+  checkoutOrder,
+  getDashboardOrder,
 } from '../../../services/mongoose/participants';
 
 import { StatusCodes } from 'http-status-codes';
 import { Request, Response, NextFunction } from 'express';
+import { ParticipantRequest } from '../../../middlewares/auth';
 
 const getAllLandingPage = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -68,6 +72,42 @@ const signin = async (req: Request, res: Response, next: NextFunction) => {
     next(err);
   }
 };
+const checkout = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await checkoutOrder(req as ParticipantRequest);
+
+    res.status(StatusCodes.CREATED).json({
+      data: result,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+const getAllPayment = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await getAllPaymentByOrganizer(req);
+
+    res.status(StatusCodes.OK).json({
+      data: result,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+const getDashboard = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await getDashboardOrder(req as ParticipantRequest);
+
+    res.status(StatusCodes.OK).json({
+      data: result,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
 
 export {
   getAllLandingPage,
@@ -75,4 +115,7 @@ export {
   signin,
   signup,
   activeParticipant,
+  checkout,
+  getAllPayment,
+  getDashboard,
 };

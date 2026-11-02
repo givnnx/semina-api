@@ -2,26 +2,39 @@ import { StatusCodes } from "http-status-codes";
 import { Request, Response, NextFunction } from "express";
 
 const errorHandlerMiddleware = (
-  err: any,
+  err: {
+    statusCode?: number;
+    message?: string;
+    name?: string;
+    code?: number;
+    errors?: Record<string, { message: string }>;
+    keyValue?: Record<string, unknown>;
+    value?: unknown;
+  },
   req: Request,
   res: Response,
   next: NextFunction,
 ) => {
-  console.log("err.errors");
-  console.log(err.errors);
+  const isProduction = process.env.NODE_ENV === "production";
+  const statusCode = err.statusCode || StatusCodes.INTERNAL_SERVER_ERROR;
+  let defaultMessage = err.message || "Something went wrong try again later";
+  if (statusCode === StatusCodes.INTERNAL_SERVER_ERROR && isProduction) {
+    defaultMessage = "Internal server error";
+  }
+
   let customError = {
-    statusCode: err.statusCode || StatusCodes.INTERNAL_SERVER_ERROR,
-    msg: err.message || "Something went wrong try again later",
+    statusCode,
+    msg: defaultMessage,
   };
 
-  if (err.name === "ValidationError") {
+  if (err.name === "ValidationError" && err.errors) {
     customError.msg = Object.values(err.errors)
-      .map((item: any) => item.message)
+      .map((item) => item.message)
       .join(", ");
     customError.statusCode = 400;
   }
 
-  if (err.code && err.code === 11000) {
+  if (err.code && err.code === 11000 && err.keyValue) {
     customError.msg = `Duplicate value entered for ${Object.keys(
       err.keyValue,
     )} field, please choose another value`;

@@ -11,12 +11,17 @@ import {
   authorizeRoles,
 } from '../../../middlewares/auth';
 
-router.post('/', createCMSOrganizer);
+router.post('/', authenticateUser, authorizeRoles('owner'), createCMSOrganizer);
 router.post(
   '/users',
   authenticateUser,
   authorizeRoles('organizer'),
   createCMSUser
 );
-router.get('/users', getCMSUsers);
+router.get(
+  '/users',
+  authenticateUser,
+  authorizeRoles('owner', 'organizer'),
+  getCMSUsers
+);
 export default router;
